@@ -63,9 +63,8 @@ public class CalculatorTest {
                 System.out.println(result);
             }
         } catch (RuntimeException e) {
-            throw new IllegalArgumentException("Не верный формат данных");
+            throw new IllegalArgumentException("Неверный формат данных");
         }
-
     }
 
     private static boolean isNumsInRange(int number) {
