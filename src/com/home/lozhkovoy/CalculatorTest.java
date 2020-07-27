@@ -25,18 +25,8 @@ public class CalculatorTest {
             text = num1.replaceAll("\\s","");
             String[] blocks = text.split("[+-/*]");
             romano = 0;
-            if (text.indexOf("+") != -1) {
-                sign = '+';
-            } else if (text.indexOf("-") != -1) {
-                sign = '-';
-            } else if (text.indexOf("*") != -1) {
-                sign = '*';
-            } else if (text.indexOf("/") != -1) {
-                sign = '/';
-            } else {
-                System.out.println("Арифметические операции только со знаками: /, *, +, -");
-                throw new IllegalArgumentException();
-            }
+            sign = checkSign(text);
+
             for (int i = 0; i <= 9; i++) {
                 if (rome[i].equals(blocks[0])) {
                     blocks[0] = Integer.toString(arab[i]);
@@ -66,7 +56,20 @@ public class CalculatorTest {
             throw new IllegalArgumentException("Неверный формат данных");
         }
     }
-
+    private static char checkSign(String text) {
+        if (text.indexOf("+") != -1) {
+            return '+';
+        } else if (text.indexOf("-") != -1) {
+            return '-';
+        } else if (text.indexOf("*") != -1) {
+            return '*';
+        } else if (text.indexOf("/") != -1) {
+            return '/';
+        } else {
+            System.out.println("Арифметические операции только со знаками: /, *, +, -");
+            throw new IllegalArgumentException();
+        }
+    }
     private static boolean isNumsInRange(int number) {
         return (number >= minNum && number <= maxNum);
     }
