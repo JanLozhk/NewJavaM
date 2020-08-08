@@ -1,7 +1,5 @@
 package com.home.lozhkovoy;
 
-    import java.util.Scanner;
-
     public class Calculator {
         private static int result;
 
