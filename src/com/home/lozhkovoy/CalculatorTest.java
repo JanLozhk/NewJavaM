@@ -26,7 +26,7 @@ public class CalculatorTest {
             romano = 0;
             sign = checkSign(text); // метод определения знака операции
 
-            for (int i = 0; i <= 9; i++) {
+            for (int i = 0; i <= 9; i++) { //определить однотипные числа или нет
                 if (rome[i].equals(blocks[0])) {
                     blocks[0] = Integer.toString(arab[i]);
                     romano++;
