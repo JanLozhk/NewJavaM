@@ -1,12 +1,11 @@
 package com.home.lozhkovoy;
 
-//import java.util.Arrays;
 import java.util.Scanner;
 
 public class CalculatorTest {
     private static char sign;
-    private static int minNum = 1;
-    private static int maxNum = 10;
+    private final static int minNum = 1;
+    private final static int maxNum = 10;
     private static int[] arab = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     private static String[] rome = {"X", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
     private static String num1;
@@ -22,8 +21,8 @@ public class CalculatorTest {
         try {
             System.out.println("Введите арифметическую операцию:");
             num1 = reader.nextLine();
-            text = num1.replaceAll("\\s",""); // удалить все пробелы из введенной строки
-            String[] blocks = text.split("[+-/*]"); // поместить в строковый массив все переменные до знака и после любого из арифметических знаков
+            text = num1.replaceAll("\\s",""); // заменить все пробелы (\s) из введенной строки, на ""
+            String[] blocks = text.split("[\\Q^*/+-%\\E]"); // поместить в строковый массив все переменные до знака и после любого из арифметических знаков
             romano = 0;
             sign = checkSign(text); // метод определения знака операции
 
@@ -58,14 +57,18 @@ public class CalculatorTest {
     }
 
     private static char checkSign(String text) { //определение знака арифметической операции
-        if (text.indexOf("+") != -1) {
-            return '+';
-        } else if (text.indexOf("-") != -1) {
-            return '-';
+        if (text.indexOf("^") != -1) {
+            return '^';
         } else if (text.indexOf("*") != -1) {
             return '*';
         } else if (text.indexOf("/") != -1) {
             return '/';
+        } else if (text.indexOf("+") != -1) {
+            return '+';
+        } else if (text.indexOf("-") != -1) {
+            return '-';
+        } else if (text.indexOf("%") != -1) {
+            return '%';
         } else {
             System.out.println("Арифметические операции только со знаками: /, *, +, -");
             throw new IllegalArgumentException();

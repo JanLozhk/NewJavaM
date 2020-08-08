@@ -9,16 +9,22 @@ package com.home.lozhkovoy;
         public int calculate(int num1, int num2, char sign) {
             switch(sign) {
                 case '+':
-                    result = num1 + num2;
+                    result = Math.addExact(num1, num2);
                     break;
                 case '-':
-                    result = num1 - num2;
+                    result = Math.subtractExact(num1, num2);
                     break;
                 case '*':
-                    result = num1 * num2;
+                    result = Math.multiplyExact(num1, num2);
                     break;
                 case '/':
-                    result = num1 / num2;
+                    result = Math.floorDiv(num1, num2);
+                    break;
+                case '^':
+                    result = (int) Math.pow(num1, num2);
+                    break;
+                case '%':
+                    result = num1 % num2;
                     break;
             }
             return result;
